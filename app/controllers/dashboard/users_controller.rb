@@ -8,12 +8,10 @@ module Dashboard
       if current_user.update(user_params)
         redirect_to edit_user_path,
                     notice: t('.success')
+      elsif user_params[:locale].nil?
+        render template: 'dashboard/users/password.html.erb'
       else
-        if user_params[:locale].nil?
-          render template: 'dashboard/users/password.html.erb'
-        else
-          render :edit
-        end
+        render :edit
       end
     end
 
