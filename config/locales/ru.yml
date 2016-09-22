@@ -1,43 +1,111 @@
 ru:
-  welcome: 'Добро пожаловать.'
+  email: 'Перейти на сайт для просмотра карточек'
+  card_image: 'Выберите картинку'
+  main:
+    index:
+      title: 'Добро пожаловать.'
+  shared:
+    header:
+      flashcards_label: 'Флэшкарточкер'
+      sing_up_label: 'Зарегистрироваться'
+      log_in_label: 'Войти'
+      all_decks_label: 'Все колоды'
+      add_deck_label: 'Добавить колоду'
+      all_cards_label: 'Все карточки'
+      add_card_label: 'Добавить карточку'
+      user_profile_label: 'Профиль пользователя'
+      delete_user_label: 'Удалить пользователя'
+      log_in_with_github_label: 'Войти через Github'
+      log_out_label: 'Выйти'
+  home:
+    users:
+      new:
+        title: 'Регистрация'
+      create:
+        success: 'Пользователь успешно создан.'
+    user_sessions:
+      new:
+        sing_in_label: 'Вход'
+        email_label: 'E-mail'
+        password_label: 'Пароль'
+        log_in_label: 'Войти'
+      create:
+        success: 'Вход выполнен успешно.'
+        error: 'Вход не выполнен. Проверте вводимые E-mail и Пароль.'
+    oauths:
+      create:
+        success: "Вход из аккаунта %{provider} выполнен успешно."
+        error: "Вход из аккаунта %{provider.titleize} не выполнен."
+  dashboard:
+    blocks:
+      index:
+        title: 'Название'
+        current_false: 'Сделать обычной'
+        current_true: 'Сделать текущей'
+        edit: 'Редактировать'
+        delete: 'Удалить'
+        confirm: 'Удалить колоду?'
+      new:
+        title: 'Добавить колоду'
+      edit:
+        title: 'Редактировать колоду'
+    cards:
+      index:
+        text: 'Оригинал'
+        translate: 'Перевод'
+        review_date: 'Пересмотр'
+        edit: 'Редактировать'
+        delete: 'Удалить'
+        confirm: 'Удалить карточку?'
+      new:
+        title: 'Добавить карточку'
+      new:
+        title: 'Добавить карточку'
+    users:
+      edit:
+        title: 'Профиль'
+      update:
+        success: 'Профиль пользователя успешно обновлен.'
+      destroy:
+        success: 'Пользователь успешно удален.'
+  simple_form:
+    labels:
+      block:
+        title: 'Название'
+      card:
+        original_text: 'Оригинал'
+        translated_text: 'Перевод'
+        image: 'Изображение'
+        block_id: 'Колоды'
+        remove_image: 'Удалить изображение'
+      user:
+        locale: 'Локаль'
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+  change_password: 'Изменить пароль'
   original_text_label: 'Оригинал'
   translated_text_label: 'Перевод'
   current_card_label: 'Текущая карточка'
   check_card_button: 'Проверить'
   no_review_card_text: 'Вы изучили все доступные карточки.
       Ожидайте наступления даты пересмотра.'
-  registration_label: 'Регистрация'
-  email_label: 'E-mail'
-  password_label: 'Пароль'
-  password_confirmation_label: 'Подтверждение пароля'
-  sing_up_label: 'Зарегистрироваться'
-  sing_in_label: 'Вход'
-  log_in_label: 'Войти'
-  all_decks_label: 'Все колоды'
-  add_deck_label: 'Добавить колоду'
-  all_cards_label: 'Все карточки'
-  add_card_label: 'Добавить карточку'
-  user_profile_label: 'Профиль пользователя'
-  delete_user_label: 'Удалить пользователя'
-  log_out_label: 'Выйти'
-  user_created_successfully_notice: 'Пользователь успешно создан.'
   please_log_in_alert: 'Пожалуйста авторизуйтесь.'
   not_found_alert: 'Вы обратились к несуществующей записи.'
-  log_in_is_successful_notice: 'Вход выполнен успешно.'
-  not_logged_in_alert: 'Вход не выполнен. Проверте вводимые E-mail и Пароль.'
-  flashcards_label: 'Флэшкарточкер'
-  log_in_with_github_label: 'Войти через Github'
   correct_translation_notice: 'Вы ввели верный перевод. Продолжайте.'
   incorrect_translation_alert: 'Вы ввели не верный перевод. Повторите попытку.'
   translation_from_misprint_alert: "Вы ввели перевод c опечаткой.
       Ваш вариант: %{user_translation} / Оригинал: %{original_text} /
       Перевод: %{translated_text}. Продолжайте."
-  log_in_is_successful_provider_notice: "Вход из аккаунта %{provider} выполнен успешно."
   log_out_is_successful_notice: 'Выход выполнен успешно.'
-  log_out_failed_provider_alert: "Вход из аккаунта %{provider.titleize} не выполнен ."
+  log_out_failed_provider_alert:
   please_log_in: 'Пожалуйста авторизуйтесь.'
-
   activerecord:
+    activerecord:
+    models:
+      user: 'Пользователя'
+      card: 'Карточку'
+      block: 'Колоду'
     errors:
       messages:
         blank: 'Заполните поле.'
@@ -45,3 +113,10 @@ ru:
         confirmation: 'Значения не совпадают.'
         taken: 'Не уникальное значение.'
         invalid: 'Не верный формат.'
+  helpers:
+    select:
+      prompt: 'Выберите: '
+    submit:
+      create: Создать %{model}
+      submit: Сохранить %{model}
+      update: Сохранить %{model}
