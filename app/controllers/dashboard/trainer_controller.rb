@@ -26,7 +26,7 @@ module Dashboard
       check_result = @card.check_translation(trainer_params[:user_translation])
 
       if check_result[:state]
-        if check_result[:distance] == 0
+        if check_result[:distance].zero?
           flash[:notice] = t(:correct_translation_notice)
         else
           flash[:alert] = t 'translation_from_misprint_alert',
