@@ -1,5 +1,4 @@
-== README
-{<img src="https://travis-ci.org/gvoz/refact_flashcards.svg" alt="Build Status" />}[https://travis-ci.org/refact_flashcards]{<img src="https://codeclimate.com/github/gvoz/refact_flashcards/badges/gpa.svg" alt="Code Climate"/>}[https://codeclimate.com/github/gvoz/refact_flashcards]
+== README {<img src="https://travis-ci.org/gvoz/refact_flashcards.svg" alt="Build Status" />}[https://travis-ci.org/refact_flashcards]{<img src="https://codeclimate.com/github/gvoz/refact_flashcards/badges/gpa.svg" alt="Code Climate"/>}[https://codeclimate.com/github/gvoz/refact_flashcards]
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
