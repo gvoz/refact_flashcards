@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  validates :password, confirmation: true, presence: true,
-            length: { minimum: 3 }, if: :password
+  validates :password, confirmation: true, presence: true, length: { minimum: 3 }, if: :password
   validates :password_confirmation, presence: true, if: :password_confirmation
   validates :email, uniqueness: true, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }

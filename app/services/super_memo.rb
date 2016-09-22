@@ -29,18 +29,11 @@ class SuperMemo
     end
 
     def set_quality(attempt, distance)
-      if distance <= 1
-        case attempt
-        when 1 then 5
-        when 2 then 4
-        else 3
-        end
-      else
-        case attempt
-        when 1 then 2
-        when 2 then 1
-        else 0
-        end
+      diff = distance <= 1 ? 0 : 3
+      case attempt
+      when 1 then 5 - diff
+      when 2 then 4 - diff
+      else 3 - diff
       end
     end
   end
