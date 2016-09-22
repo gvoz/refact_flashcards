@@ -38,12 +38,12 @@ module Dashboard
     end
 
     def set_as_current
-      current_user.set_current_block(@block)
+      current_user.current_block(@block)
       redirect_to blocks_path
     end
 
     def reset_as_current
-      current_user.reset_current_block
+      current_user.current_block
       redirect_to blocks_path
     end
 
