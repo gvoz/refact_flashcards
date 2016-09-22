@@ -1,3 +1,4 @@
+# class for users
 class User < ActiveRecord::Base
   has_many :cards, dependent: :destroy
   has_many :blocks, dependent: :destroy
@@ -13,8 +14,8 @@ class User < ActiveRecord::Base
   end
 
   validates :password, confirmation: true, presence: true,
-            length: { minimum: 3 }
-  validates :password_confirmation, presence: true
+            length: { minimum: 3 }, if: :password
+  validates :password_confirmation, presence: true, if: :password_confirmation
   validates :email, uniqueness: true, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
   validates :locale, presence: true,

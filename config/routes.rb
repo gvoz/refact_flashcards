@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
   scope module: 'dashboard' do
     resources :user_sessions, only: :destroy
-    resources :users, only: :destroy
+    resources :users, only: [:edit, :update, :destroy]
+    get 'password' => 'users#password', as: :password_user
     post 'logout' => 'user_sessions#destroy', :as => :logout
 
     resources :cards
@@ -29,8 +30,5 @@ Rails.application.routes.draw do
 
     put 'review_card' => 'trainer#review_card'
     get 'trainer' => 'trainer#index'
-
-    get 'profile/:id/edit' => 'profile#edit', as: :edit_profile
-    put 'profile/:id' => 'profile#update', as: :profile
   end
 end
