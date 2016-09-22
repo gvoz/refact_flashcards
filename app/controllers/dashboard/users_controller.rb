@@ -9,7 +9,7 @@ module Dashboard
         redirect_to edit_user_path,
                     notice: t('.success')
       elsif user_params[:locale].nil?
-        render template: 'dashboard/users/password.html.erb'
+        render :password
       else
         render :edit
       end
