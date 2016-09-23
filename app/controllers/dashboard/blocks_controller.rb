@@ -1,7 +1,7 @@
 module Dashboard
   # class for blocks
   class BlocksController < Dashboard::BaseController
-    before_action :set_block, only: [:destroy, :edit, :update, :set_as_current,
+    before_action :block, only: [:destroy, :edit, :update, :set_as_current,
                                      :reset_as_current]
 
     def index
@@ -38,18 +38,18 @@ module Dashboard
     end
 
     def set_as_current
-      current_user.current_block(@block)
+      current_user.block_current(@block)
       redirect_to blocks_path
     end
 
     def reset_as_current
-      current_user.current_block
+      current_user.block_current
       redirect_to blocks_path
     end
 
     private
 
-    def set_block
+    def block
       @block = current_user.blocks.find(params[:id])
     end
 

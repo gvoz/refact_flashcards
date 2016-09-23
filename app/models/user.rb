@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
             inclusion: { in: I18n.available_locales.map(&:to_s),
                     message: 'Выберите локаль из выпадающего списка.' }
 
-  def current_block(block = nil)
+  def block_current(block = nil)
     update_attribute(:current_block_id, block.nil? ? nil : block.id)
   end
 
