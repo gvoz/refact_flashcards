@@ -8,6 +8,8 @@ Style/IfUnlessModifier:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/AlignHash:
+  Enabled: false
 Metrics/AbcSize:
   Max: 30
 Metrics/MethodLength:
