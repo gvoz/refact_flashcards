@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'support/helpers/login_helper.rb'
-include LoginHelper
 
 describe 'password authentication' do
   describe 'register' do
@@ -9,34 +8,34 @@ describe 'password authentication' do
     end
 
     it 'register TRUE' do
-      register('test@test.com', '12345', '12345', 'Зарегистрироваться')
+      register('test@test.com', '12345', '12345', 'Создать Пользователя')
       expect(page).to have_content 'Пользователь успешно создан.'
     end
 
     it 'password confirmation FALSE' do
-      register('test@test.com', '12345', '56789', 'Зарегистрироваться')
+      register('test@test.com', '12345', '56789', 'Создать Пользователя')
       expect(page).to have_content "Значения не совпадают."
     end
 
     it 'e-mail FALSE' do
-      register('test', '12345', '12345', 'Зарегистрироваться')
+      register('test', '12345', '12345', 'Создать Пользователя')
       expect(page).to have_content 'Не верный формат.'
     end
 
     it 'e-mail has already been taken' do
-      register('test@test.com', '12345', '12345', 'Зарегистрироваться')
+      register('test@test.com', '12345', '12345', 'Создать Пользователя')
       click_link 'Выйти'
-      register('test@test.com', '12345', '12345', 'Зарегистрироваться')
+      register('test@test.com', '12345', '12345', 'Создать Пользователя')
       expect(page).to have_content 'Не уникальное значение.'
     end
 
     it 'password is too short' do
-      register('test@test.com', '1', '12345', 'Зарегистрироваться')
+      register('test@test.com', '1', '12345', 'Создать Пользователя')
       expect(page).to have_content 'Короткое значение.'
     end
 
     it 'password_confirmation is too short' do
-      register('test@test.com', '12345', '1', 'Зарегистрироваться')
+      register('test@test.com', '12345', '1', 'Создать Пользователя')
       expect(page).to have_content 'Значения не совпадают.'
     end
   end
@@ -87,25 +86,23 @@ describe 'password authentication' do
 
     it 'register TRUE' do
       click_link 'en'
-      register('test@test.com', '12345', '12345', 'Sing up')
+      register('test@test.com', '12345', '12345', 'Create User')
       expect(page).to have_content 'User created successfully.'
     end
 
     it 'default locale' do
       click_link 'en'
-      register('test@test.com', '12345', '12345', 'Sing up')
+      register('test@test.com', '12345', '12345', 'Create User')
       user = User.find_by_email('test@test.com')
       expect(user.locale).to eq('en')
     end
 
     it 'available locale' do
       click_link 'en'
-      register('test@test.com', '12345', '12345', 'Sing up')
+      register('test@test.com', '12345', '12345', 'Create User')
       click_link 'User profile'
-      fill_in 'user[password]', with: '12345'
-      fill_in 'user[password_confirmation]', with: '12345'
-      click_button 'Сохранить'
-      expect(page).to have_content 'Профиль пользователя успешно обновлен.'
+      click_button 'Update User'
+      expect(page).to have_content 'User successfully updated.'
     end
 
     it 'authentication TRUE' do

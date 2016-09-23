@@ -1,0 +1,16 @@
+Style/StringLiterals:
+  Enabled: false
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/AlignHash:
+  Enabled: false
+Metrics/AbcSize:
+  Max: 30
+Metrics/MethodLength:
+  Max: 20

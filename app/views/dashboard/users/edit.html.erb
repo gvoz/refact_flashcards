@@ -1,0 +1,15 @@
+<h2><%= t('.title') %></h2>
+<%= simple_form_for current_user do |f| %>
+  <div class="form-group">
+    <%= f.input :locale, priority: I18n.default_locale,
+                collection: I18n.available_locales,
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :email, as: :email,
+                input_html: { class: 'form-control', required: true,
+                              autofocus: true } %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-default' %>
+<% end %>
+<%= link_to t('change_password'), password_user_path, class: "navbar-brand" %>
