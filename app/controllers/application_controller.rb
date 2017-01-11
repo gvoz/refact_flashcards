@@ -1,7 +1,11 @@
 # ApplicationController
 class ApplicationController < ActionController::Base
+  include Pundit
+
   protect_from_forgery with: :exception
   before_action :set_locale
+
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
   private
 

@@ -4,7 +4,7 @@ ActiveAdmin.register_page "Dashboard" do
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
 
-    section "Recent Cards" do
+    panel "Recent Cards" do
       table_for Card.order("review_date desc").limit(5) do
         column :original_text
         column :translated_text
