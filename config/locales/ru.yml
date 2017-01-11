@@ -120,3 +120,6 @@ ru:
       create: Создать %{model}
       submit: Сохранить %{model}
       update: Сохранить %{model}
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"

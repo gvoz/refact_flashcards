@@ -7,7 +7,12 @@ module ActiveAdmin
     end
 
     def show?
-      user.admin?
+      case record.name
+      when 'Dashboard'
+        user.admin?
+      else
+        false
+      end
     end
   end
 end

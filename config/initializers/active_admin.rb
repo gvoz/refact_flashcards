@@ -6,9 +6,17 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Flashcards"
 
+  config.namespace :admin do |admin|
+    admin.build_menu :utility_navigation do |menu|
+      menu.add label: "ActiveAdmin.info", url: "http://www.activeadmin.info",
+                                          html_options: { target: :blank }
+      admin.add_current_user_to_menu  menu
+    end
+  end
+
   def authenticate_user!
-    if !current_user.admin?
-     redirect_to new_user_session_path
+    if current_user.nil? or not current_user.admin?
+      redirect_to root_path
     end
   end
 
@@ -60,7 +68,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  # config.authentication_method = :authenticate_admin_user!
+  config.authentication_method = :authenticate_user!
 
   # == User Authorization
   #
@@ -83,7 +91,7 @@ ActiveAdmin.setup do |config|
   # because, by default, user gets redirected to Dashboard. If user
   # doesn't have access to Dashboard, he'll end up in a redirect loop.
   # Method provided here should be defined in application_controller.rb.
-  config.on_unauthorized_access = :access_denied
+  # config.on_unauthorized_access = :access_denied
 
   # == Current User
   #

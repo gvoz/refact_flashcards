@@ -34,7 +34,6 @@ gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'pundit'
 
 group :development, :test do
