@@ -10,8 +10,6 @@ FactoryGirl.define do
       admin true
     end
 
-    factory :admin,   traits: [:admin]
-
     factory :user_with_one_block_without_cards do
       after(:create) do |user|
         create(:block, user: user)
@@ -57,5 +55,7 @@ FactoryGirl.define do
         create(:block_with_two_cards, user: user)
       end
     end
+
+    factory :admin,   traits: [:admin]
   end
 end

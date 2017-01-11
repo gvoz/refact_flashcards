@@ -4,5 +4,4 @@ module ActiveAdmin
       true
     end
   end
-
 end

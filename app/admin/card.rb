@@ -5,5 +5,4 @@ ActiveAdmin.register Card do
     column :review_date
     actions
   end
-
 end

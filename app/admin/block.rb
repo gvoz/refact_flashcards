@@ -3,5 +3,4 @@ ActiveAdmin.register Block do
     column :title
     actions
   end
-
 end

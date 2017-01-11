@@ -10,6 +10,5 @@ ActiveAdmin.register_page "Dashboard" do
       end
       strong { link_to "View All Cards", admin_cards_path }
     end
-
   end # content
 end
