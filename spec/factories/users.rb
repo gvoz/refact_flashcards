@@ -6,6 +6,12 @@ FactoryGirl.define do
     locale 'ru'
     current_block_id ''
 
+    trait :admin do
+      admin true
+    end
+
+    factory :admin,   traits: [:admin]
+
     factory :user_with_one_block_without_cards do
       after(:create) do |user|
         create(:block, user: user)

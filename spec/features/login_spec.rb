@@ -74,6 +74,33 @@ describe 'password authentication' do
     end
   end
 
+  describe 'admin page' do
+    before do
+      visit root_path
+    end
+
+    it 'not register' do
+      visit admin_root_path
+      expect(page).to have_content 'Добро пожаловать.'
+      expect(page).to have_content 'Войти'
+    end
+
+    it 'not admin' do
+      create(:user)
+      login('test@test.com', '12345', 'Войти')
+      visit admin_root_path
+      expect(page).to have_content 'Добро пожаловать.'
+      expect(page).to have_content 'Профиль пользователя'
+    end
+
+    it 'admin' do
+      create(:admin)
+      login('test@test.com', '12345', 'Войти')
+      visit admin_root_path
+      expect(page).to have_content 'Панель управления'
+    end
+  end
+
   describe 'change language' do
     before do
       visit root_path
