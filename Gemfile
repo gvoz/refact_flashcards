@@ -33,6 +33,8 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
+gem 'activeadmin', github: 'activeadmin'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'
