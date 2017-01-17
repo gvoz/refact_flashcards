@@ -1,3 +1,5 @@
 <h2><%= t('.title') %></h2>
 
 <%= render 'form', card: @card %>
+<%= render 'flickr', card: @card %>
+<div id="flickr_photos"><%= render 'photos', card: @card %></div>

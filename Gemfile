@@ -15,6 +15,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'sdoc', group: :doc
+gem 'flickraw'
 
 gem 'rake'
 gem 'simple_form'
