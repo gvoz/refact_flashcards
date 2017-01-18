@@ -37,14 +37,14 @@ module Dashboard
     end
 
     def find_flickr
-     @tag = params[:tag]
-     @urls = Flickr.photo(@tag)
+      @tag = params[:tag]
+      @urls = Flickr.photo(@tag)
 
-     respond_to do |format|
-       format.html
-       format.js
-     end
-   end
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
 
     private
 

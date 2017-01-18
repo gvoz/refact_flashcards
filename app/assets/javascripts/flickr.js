@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
 
   $('#flickr_search').hide();
 
