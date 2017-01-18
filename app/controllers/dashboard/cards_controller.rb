@@ -15,7 +15,7 @@ module Dashboard
     end
 
     def create
-      @card = current_user.cards.build(card_params)
+      @card = current_user.cards.create(card_params)
       if @card.save
         redirect_to cards_path
       else

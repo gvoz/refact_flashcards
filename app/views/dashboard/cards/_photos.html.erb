@@ -1,11 +1,10 @@
-<br />
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <% if @urls %>
       <div class="photo">
         <ul>
           <% @urls.each do |url| %>
-            <li><%= link_to(image_tag(url), '#') %></li>
+            <li><%= link_to(image_tag(url, class: 'flickr-image'), '#') %></li>
           <% end %>
         </ul>
       </div>

@@ -1,15 +1,19 @@
 $(document).ready(function() {
 
-  $('#flickr_search').hide();
+  $('#flickr-search').hide();
 
-  $('.flickr_load').on('click', function(){
-    $('#flickr_search').show();
-    // $('.flickr_load').hide();
+  $('#flickr-load').on('click', function(){
+    $('#flickr-search').show();
+    $('#card-info').hide();
   });
+});
 
-  $("ul").on('click', 'li', function() {
-    var li = $(this);
-    var scr = li.find('img').attr('src');
-    alert(scr);
-  });
+$(document).on('click', '.flickr-image', function(){
+  var img_scr = $(this).attr('src');
+  $('#card_remote_image_url').val(img_scr);
+  $('#image-block').show();
+  $('#card-image').attr('src', img_scr);
+  $('#card-info').show();
+  $('#flickr-search').hide();
+  $('#flickr-photos').hide();
 });
