@@ -54,7 +54,8 @@ module Dashboard
 
     def card_params
       params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                   :image, :image_cache, :remove_image, :block_id, :tag)
+                                   :image, :image_cache, :remote_image_url,
+                                   :remove_image, :block_id, :tag)
     end
   end
 end

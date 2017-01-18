@@ -11,12 +11,13 @@
   </div>
 
   <div class="form-group">
-    <%= f.file_field :image, class: "filestyle", 'data-buttonText' => t(:card_image) %>
+    <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
+                      input_html: { class: 'form-control', required: true } %>
   </div>
 
   <div class="form-group">
-    <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
-                      input_html: { class: 'form-control', required: true } %>
+    <%= f.file_field :image, class: "filestyle", 'data-buttonText' => t(:card_image) %>
+    <%= f.hidden_field :remote_image_url %>
   </div>
 
   <% if card.image? %>
@@ -34,3 +35,6 @@
 
   <%= f.button :submit, class: 'btn btn-default' %>
 <% end %>
+
+<%= button_tag "Загрузить из Flickr", class: 'flickr_load' %>
+<div id="flickr_search"><%= render 'flickr', card: @card %></div>
