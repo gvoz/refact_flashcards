@@ -35,6 +35,7 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'activeadmin', github: 'activeadmin'
 gem 'pundit'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug'

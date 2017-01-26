@@ -36,10 +36,22 @@ module Dashboard
       redirect_to cards_path
     end
 
+    def load_form
+    end
+
+    def load
+      ParseCardsJob.perform_later current_user.id, card_form_params
+      redirect_to cards_path
+    end
+
     private
 
     def set_card
       @card = current_user.cards.find(params[:id])
+    end
+
+    def card_form_params
+      params.require(:card_form).permit(:translated_selector, :original_selector, :url, :search_selector, :block_id)
     end
 
     def card_params
