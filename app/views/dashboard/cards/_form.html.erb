@@ -1,36 +1,44 @@
-<%= simple_form_for card do |f| %>
-  <div class="form-group">
-    <%= f.input :original_text,  as: :text,
-                input_html: { class: 'form-control', required: true,
-                              autofocus: true } %>
-  </div>
-
-  <div class="form-group">
-    <%= f.input :translated_text,  as: :text,
-                input_html: { class: 'form-control', required: true } %>
-  </div>
-
-  <div class="form-group">
-    <%= f.file_field :image, class: "filestyle", 'data-buttonText' => t(:card_image) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
-                      input_html: { class: 'form-control', required: true } %>
-  </div>
-
-  <% if card.image? %>
+<div id="card-info">
+  <%= simple_form_for card do |f| %>
     <div class="form-group">
-      <%= f.input :remove_image, as: :boolean %>
-      <div class="row">
-        <div class="col-xs-6 col-md-4 card_image">
-          <p class="thumbnail">
-            <%= image_tag card.image_url %>
-          </p>
+      <%= f.input :original_text,  as: :text,
+                  input_html: { class: 'form-control', required: true,
+                                autofocus: true } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :translated_text,  as: :text,
+                  input_html: { class: 'form-control', required: true } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
+                        input_html: { class: 'form-control', required: true } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.file_field :image, class: "filestyle", 'data-buttonText' => t(:card_image) %>
+      <%= f.hidden_field :remote_image_url %>
+      <%= link_to "Загрузить из Flickr", '#', class: 'btn btn-default', id: 'flickr-load' %>
+    </div>
+
+    <% if card.image? %>
+      <div class="form-group" id = 'image-block'>
+    <% else %>
+      <div class="form-group" id = 'image-block' hidden="true">
+    <% end %>
+        <%= f.input :remove_image, as: :boolean %>
+        <div class="row">
+          <div class="col-xs-6 col-md-4 card_image">
+            <p class="thumbnail">
+              <%= image_tag card.image_url, id: 'card-image' %>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
 
-  <%= f.button :submit, class: 'btn btn-default' %>
-<% end %>
+    <%= f.button :submit, class: 'btn btn-default' %>
+  <% end %>
+</div>
+
+<div id="flickr-search"><%= render 'flickr', card: @card %></div>

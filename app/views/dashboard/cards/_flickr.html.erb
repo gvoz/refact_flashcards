@@ -1,0 +1,4 @@
+<%= form_tag find_flickr_path, method: :put, remote: true do %>
+  <%= text_field_tag :tag %>
+  <%= submit_tag 'Найти во Flickr', class: 'btn btn-default', id: 'flickr-search' %>
+<% end %>
