@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update, :destroy]
     get 'password' => 'users#password', as: :password_user
     post 'logout' => 'user_sessions#destroy', :as => :logout
+    put "find_flickr"        => "cards#find_flickr"
 
     resources :cards do
       collection do

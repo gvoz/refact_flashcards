@@ -15,7 +15,7 @@ module Dashboard
     end
 
     def create
-      @card = current_user.cards.build(card_params)
+      @card = current_user.cards.create(card_params)
       if @card.save
         redirect_to cards_path
       else
@@ -44,6 +44,16 @@ module Dashboard
       redirect_to cards_path
     end
 
+    def find_flickr
+      @tag = params[:tag]
+      @urls = Flickr.photo(@tag)
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+
     private
 
     def set_card
@@ -56,7 +66,8 @@ module Dashboard
 
     def card_params
       params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                   :image, :image_cache, :remove_image, :block_id)
+                                   :image, :image_cache, :remote_image_url,
+                                   :remove_image, :block_id, :tag)
     end
   end
 end
