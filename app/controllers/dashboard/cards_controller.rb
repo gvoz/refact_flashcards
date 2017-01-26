@@ -62,7 +62,7 @@ module Dashboard
     end
 
     def card_form_params
-      params.require(:card_form).permit(:translated_selector, :original_selector, :url, :search_selector, :block_id)
+      params.require(:card_form).permit(:url, :search_selector, :original_selector, :translated_selector, :block_id)
     end
 
     def card_params
