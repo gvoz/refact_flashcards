@@ -86,10 +86,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
-<<<<<<< HEAD
-=======
     connection_pool (2.2.1)
->>>>>>> 36cd5964de0a58c1fa2c92c26b728849f0474009
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)

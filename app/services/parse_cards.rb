@@ -13,17 +13,19 @@ class ParseCards
 
   def call
     page.search(options[:search_selector]).each do |row|
-      original_text   = row.search(options[:original_selector].rstrip).first.text.downcase
-      translated_text = row.search(options[:translated_selector].rstrip).first.text.downcase
-
-      if original_text && translated_text
-        user.cards.create!(
-          original_text: original_text,
-          translated_text: translated_text,
-          block_id: options[:block_id],
-          review_date: 3.days.from_now
-        )
-      end
+      original_text   = row.search(options[:original_selector].rstrip).first.text
+      translated_text = row.search(options[:translated_selector].rstrip).first.text
+      next unless original_text && translated_text
+      create_card(original_text, translated_text)
     end
+  end
+
+  def create_card(original_text, translated_text)
+    user.cards.create!(
+      original_text: full_downcase(original_text),
+      translated_text: full_downcase(translated_text),
+      block_id: options[:block_id],
+      review_date: 3.days.from_now
+    )
   end
 end
