@@ -36,6 +36,15 @@ module Dashboard
       redirect_to cards_path
     end
 
+    def load_form
+      # load form
+    end
+
+    def load
+      ParseCardsJob.perform_later current_user.id, card_form_params
+      redirect_to cards_path
+    end
+
     def find_flickr
       @tag = params[:tag]
       @urls = Flickr.photo(@tag)
@@ -50,6 +59,10 @@ module Dashboard
 
     def set_card
       @card = current_user.cards.find(params[:id])
+    end
+
+    def card_form_params
+      params.require(:card_form).permit(:url, :search_selector, :original_selector, :translated_selector, :block_id)
     end
 
     def card_params

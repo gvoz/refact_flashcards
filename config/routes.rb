@@ -21,7 +21,13 @@ Rails.application.routes.draw do
     post 'logout' => 'user_sessions#destroy', :as => :logout
     put "find_flickr"        => "cards#find_flickr"
 
-    resources :cards
+    resources :cards do
+      collection do
+        get 'load_form'
+        post "load"
+      end
+    end
+    #post "load_cards" => "cards#load_cards", :as => "load_cards"
 
     resources :blocks do
       member do
