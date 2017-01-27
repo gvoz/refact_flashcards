@@ -34,7 +34,7 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
-gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin', github: 'activeadmin'
 gem 'pundit'
 gem 'sidekiq'
 
