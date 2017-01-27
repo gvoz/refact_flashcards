@@ -105,7 +105,7 @@ describe 'Use Flickr Api (stub_request)' do
     it 'return image url' do
       stub_request(:post, "https://api.flickr.com/services/rest/").to_return(status: 200, body: response_methods)
       stub_request(:post, "https://api.flickr.com/services/rest/").to_return(status: 200, body: response_photos)
-      photos = Flickr.photo('photo')
+      photos = Flickr.new('photo', 10).call
 
       expect(photos).to be_instance_of(Array)
       expect(photos.length).to eq 10
