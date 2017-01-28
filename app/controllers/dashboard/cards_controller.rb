@@ -47,8 +47,7 @@ module Dashboard
     end
 
     def find_flickr
-      @tag = params[:tag]
-      @urls = Flickr.photo(@tag)
+      @urls = Flickr.new(params[:tag]).call
 
       respond_to do |format|
         format.html

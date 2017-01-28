@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'jbuilder'
 gem 'sdoc', group: :doc
 gem 'flickraw'
+gem 'redis-rails'
 
 gem 'rake'
 gem 'simple_form'
