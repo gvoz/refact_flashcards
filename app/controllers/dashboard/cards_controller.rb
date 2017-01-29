@@ -2,6 +2,7 @@ module Dashboard
   # class for cards
   class CardsController < Dashboard::BaseController
     before_action :set_card, only: [:destroy, :edit, :update]
+    skip_after_action :track_action, only: [:create, :find_flickr]
 
     def index
       @cards = current_user.cards.all.order('review_date')
@@ -18,6 +19,7 @@ module Dashboard
     def create
       @card = current_user.cards.create(card_params)
       if @card.save
+        ahoy.track "Card", type: :create
         redirect_to cards_path
       else
         render :new
@@ -48,7 +50,7 @@ module Dashboard
 
     def find_flickr
       @urls = Flickr.new(params[:tag]).call
-
+      ahoy.track "Card", type: :flickr, tag: params[:tag]
       respond_to do |format|
         format.html
         format.js

@@ -39,4 +39,14 @@ Rails.application.routes.draw do
     put 'review_card' => 'trainer#review_card'
     get 'trainer' => 'trainer#index'
   end
+
+  get 'statistics/index'
+  resources :statistics, only: [] do
+    collection do
+      get 'visits_per_day'
+      get 'card_actions'
+      get 'results_review_cards'
+      get 'visits_from_countries'
+    end
+  end
 end

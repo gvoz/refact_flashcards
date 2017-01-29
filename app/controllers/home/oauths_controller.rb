@@ -1,6 +1,7 @@
 module Home
   # class for login with provider
   class OauthsController < ApplicationController
+    skip_after_action :track_action, only: [:callback]
     # sends the user on a trip to the provider,
     # and after authorizing there back to the callback url.
     def oauth
@@ -11,6 +12,7 @@ module Home
       provider = auth_params[:provider]
       if @user = login_from(provider)
         redirect_to trainer_path, notice: t('.success', provider: provider.titleize)
+        ahoy.track "Login provider", title: provider.titleize, request.filtered_parameters
       else
         begin
           @user = create_from(provider)
