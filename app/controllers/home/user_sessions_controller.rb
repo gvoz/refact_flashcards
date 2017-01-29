@@ -13,7 +13,7 @@ module Home
 
     def create
       if @user = login(params[:email], params[:password])
-        ahoy.track "Login", type: :passsword
+        ahoy.track "Login", type: :email
         redirect_back_or_to root_path, notice: t('.success')
       else
         flash.now[:alert] = t('.error')

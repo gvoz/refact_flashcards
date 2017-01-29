@@ -12,12 +12,13 @@ module Home
       provider = auth_params[:provider]
       if @user = login_from(provider)
         redirect_to trainer_path, notice: t('.success', provider: provider.titleize)
-        ahoy.track "Login provider", title: provider.titleize, request.filtered_parameters
+        ahoy.track "Login", type: :provider, provider: provider.titleize
       else
         begin
           @user = create_from(provider)
           reset_session
           auto_login(@user)
+          ahoy.track "Login", type: :provider, provider: provider.titleize
           redirect_to trainer_path, notice: t('.success', provider: provider.titleize)
         rescue
           redirect_to user_sessions_path, alert: t('.error', provider: provider.titleize)

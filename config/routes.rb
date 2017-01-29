@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     collection do
       get 'visits_per_day'
       get 'card_actions'
+      get 'login_type'
       get 'results_review_cards'
       get 'visits_from_countries'
     end

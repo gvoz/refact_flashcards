@@ -7,8 +7,16 @@ class StatisticsController < ApplicationController
   end
 
   def card_actions
-    actions = Ahoy::Event.where("name = 'Card'").group("properties->>'type'").count
+    actions = Ahoy::Event.where("name = 'Card'")
+                         .group("properties->>'type'").count
     render json: actions
+  end
+
+  def login_type
+    types = Ahoy::Event.where("name = 'Login'")
+                         .group("properties->>'type'")
+                         .group_by_day(:time, range: 1.week.ago..Time.now).count
+    render json: types.chart_json
   end
 
   def visits_per_day
@@ -17,8 +25,9 @@ class StatisticsController < ApplicationController
   end
 
   def results_review_cards
-    results = Ahoy::Event.where("name = 'Card' and properties->>'type' = 'review'").group("properties->>'status'").
-                group_by_day(:time, range: 1.week.ago..Time.now).count
+    results = Ahoy::Event.where("name = 'Card' and properties->>'type' = 'review'")
+                         .group("properties->>'status'")
+                         .group_by_day(:time, range: 1.week.ago..Time.now).count
     render json: results.chart_json
   end
 
