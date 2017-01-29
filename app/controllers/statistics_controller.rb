@@ -14,8 +14,8 @@ class StatisticsController < ApplicationController
 
   def login_type
     types = Ahoy::Event.where("name = 'Login'")
-                         .group("properties->>'type'")
-                         .group_by_day(:time, range: 1.week.ago..Time.now).count
+                        .group("properties->>'type'")
+                        .group_by_day(:time, range: 1.week.ago..Time.now).count
     render json: types.chart_json
   end
 
