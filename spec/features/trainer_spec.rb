@@ -46,31 +46,33 @@ describe 'review cards with one block' do
       click_button 'Проверить'
       expect(page).
           to have_content 'Вы ввели не верный перевод. Повторите попытку.'
-      expect(Ahoy::Event.cards.last.properties).
-          to include('type' => 'review', 'status' => 'error')
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели верный перевод. Продолжайте.'
-      expect(Ahoy::Event.cards.last.properties).
-          to include('type' => 'review', 'status' => 'success')
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели перевод c опечаткой.'
-      expect(Ahoy::Event.cards.last.properties).
-          to include('type' => 'review', 'status' => 'misprint')
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'misprint')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
   end
 
@@ -86,29 +88,35 @@ describe 'review cards with one block' do
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
-      expect(Ahoy::Event.cards.last.properties).
-          to include('type' => 'review', 'status' => 'error')
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
       click_button 'Проверить'
       expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'misprint')
     end
 
     it 'correct translation quality=3' do
@@ -131,6 +139,8 @@ describe 'review cards with one block' do
       fill_in 'user_translation', with: 'House'
       click_button 'Проверить'
       expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
   end
 end
@@ -164,27 +174,35 @@ describe 'review cards with two blocks' do
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели верный перевод. Продолжайте.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'misprint')
     end
   end
 
@@ -200,27 +218,35 @@ describe 'review cards with two blocks' do
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
       click_button 'Проверить'
       expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'misprint')
     end
   end
 end
@@ -256,27 +282,35 @@ describe 'review cards with current_block' do
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели верный перевод. Продолжайте.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
       click_button 'Проверить'
       expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'misprint')
     end
   end
 
@@ -294,27 +328,35 @@ describe 'review cards with current_block' do
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
       click_button 'Проверить'
       expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'success')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
       click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(page)
+        .to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'error')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
       click_button 'Проверить'
       expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(Ahoy::Event.cards.last.properties)
+        .to include('type' => 'review', 'status' => 'misprint')
     end
   end
 end

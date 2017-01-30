@@ -22,7 +22,6 @@ module Dashboard
 
     def review_card
       @card = current_user.cards.find(params[:card_id])
-
       check_result = @card.check_translation(trainer_params[:user_translation])
       status = ''
       if check_result[:state]
