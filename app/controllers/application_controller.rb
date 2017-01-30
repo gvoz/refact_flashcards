@@ -38,6 +38,6 @@ class ApplicationController < ActionController::Base
   end
 
   def track_action
-    ahoy.track "Viewed #{controller_name}##{action_name}", request.filtered_parameters
+    ahoy.track "Visited:#{controller_name}:#{action_name}", request.filtered_parameters
   end
 end

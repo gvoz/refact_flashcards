@@ -74,13 +74,16 @@ describe 'password authentication' do
     end
   end
 
-  describe 'admin page' do
+  describe 'admin and statistics page' do
     before do
       visit root_path
     end
 
     it 'not register' do
       visit admin_root_path
+      expect(page).to have_content 'Добро пожаловать.'
+      expect(page).to have_content 'Войти'
+      visit statistics_index_path
       expect(page).to have_content 'Добро пожаловать.'
       expect(page).to have_content 'Войти'
     end
@@ -91,6 +94,9 @@ describe 'password authentication' do
       visit admin_root_path
       expect(page).to have_content 'Добро пожаловать.'
       expect(page).to have_content 'Профиль пользователя'
+      visit statistics_index_path
+      expect(page).to have_content 'Добро пожаловать.'
+      expect(page).to have_content 'Профиль пользователя'
     end
 
     it 'admin' do
@@ -98,6 +104,8 @@ describe 'password authentication' do
       login('test@test.com', '12345', 'Войти')
       visit admin_root_path
       expect(page).to have_content 'Панель управления'
+      visit statistics_index_path
+      expect(page).to have_content 'Statistics per week'
     end
   end
 
