@@ -43,12 +43,6 @@ ActiveRecord::Schema.define(version: 20170128190203) do
   add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
 
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.string   "provider",   null: false
