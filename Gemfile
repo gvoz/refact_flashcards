@@ -39,6 +39,9 @@ gem 'activeadmin', '1.0.0.pre4'
 gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'pundit'
 gem 'sidekiq'
+gem 'ahoy_matey'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'byebug'

@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require ahoy
+//= require chartkick
 //= require jquery_ujs
 //= require bootstrap-filestyle.min
 //= require_tree .

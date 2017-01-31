@@ -1,11 +1,12 @@
 # ApplicationController
 class ApplicationController < ActionController::Base
   include Pundit
+  after_action :track_action
 
   protect_from_forgery with: :exception
   before_action :set_locale
 
-  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :not_found
 
   private
 
@@ -29,5 +30,14 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
+  end
+
+  def not_found
+    flash[:alert] = 'Вы обратились к несуществующей записи.'
+    redirect_to root_path
+  end
+
+  def track_action
+    ahoy.track "Visited: #{controller_name}:#{action_name}", request.filtered_parameters
   end
 end
